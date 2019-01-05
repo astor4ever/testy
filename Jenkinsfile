@@ -13,7 +13,7 @@ pipeline {
         stage('Build Image') {
             steps {
                 script {
-                 '/snap/bin/docker build -t testy/mvn .'
+                 '/snap/bin/docker build -t astor4ever/mvndocker .'
                 }
             }
         }
