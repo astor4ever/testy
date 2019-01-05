@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 24, Failures: 1, Errors: 0, Skipped: 23, Time elapsed: 0.796 s <<< FAILURE! - in TestSuite
+setUp(com.testautomationguru.container.test.BaseTest)  Time elapsed: 0.429 s  <<< FAILURE!
+java.lang.NullPointerException
+	at com.testautomationguru.container.test.BaseTest.setUp(BaseTest.java:22)
+
