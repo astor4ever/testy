@@ -3,6 +3,9 @@ package com.testautomationguru.container.test;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.java_websocket.client.WebSocketClient;
 import org.java_websocket.framing.Framedata;
 import org.java_websocket.handshake.ServerHandshake;
@@ -11,31 +14,37 @@ import org.java_websocket.handshake.ServerHandshake;
 public class ExampleClient extends WebSocketClient {
 
 
-    public static void main(String arg[]) throws URISyntaxException {
-        ExampleClient c = new ExampleClient( new URI( "s://dv.investimetric.io:5000/ws" )); // more about drafts here: http://github.com/TooTallNate/Java-WebSocket/wiki/Drafts
-        c.connect();
-    }
+    List<String> results = new ArrayList<>();
+    String request;
+
+//    public static void main(String arg[]) throws URISyntaxException {
+//        ExampleClient c = new ExampleClient( new URI( "s://dv.investimetric.io:5000/ws" )); // more about drafts here: http://github.com/TooTallNate/Java-WebSocket/wiki/Drafts
+//        c.connect();
+//    }
 
 
-    ExampleClient(URI serverURI) {
+    ExampleClient(URI serverURI, String request2) {
         super( serverURI );
+        request = request2;
+
     }
 
 
     @Override
     public void onOpen( ServerHandshake handshakedata ) {
-        ByteBuffer longelinebuffer = ByteBuffer.wrap( "{\"type\":\"ping\"}".getBytes() );
+        ByteBuffer longelinebuffer = ByteBuffer.wrap( request.getBytes() );
         ByteBuffer longelinebuffer2 = ByteBuffer.wrap( "{\"type\":\"subscribe\",\"channels\":[{\"name\":\"pairs\"}]}".getBytes() );
         ByteBuffer longelinebuffer3 = ByteBuffer.wrap( "{\"type\":\"subscribe\",\"channels\":[{\"name\":\"ob\",\"pair\":\"BTC-USD\"}]}".getBytes() );
 
-        sendFragmentedFrame(Framedata.Opcode.TEXT,longelinebuffer3,true);
+        sendFragmentedFrame(Framedata.Opcode.TEXT,longelinebuffer,true);
         System.out.println( "opened connection" );
         // if you plan to refuse connection based on ip or httpfields overload: onWebsocketHandshakeReceivedAsClient
     }
 
     @Override
     public void onMessage( String message ) {
-        System.out.println( "received: " + message );
+        results.add(message);
+        //System.out.println( "received: " + message );
     }
 
 
