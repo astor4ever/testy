@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="backend" parallel="none" allow-return-values="true" >
+  <test name="backend">
+    <classes>
+      <class name="com.testautomationguru.container.test.ExampleClient"/>
+    </classes>
+  </test>
+</suite> <!-- Suite -->
