@@ -14,7 +14,7 @@ import java.util.List;
 import static org.testng.Assert.*;
 
 
-public class Backend {
+public class backend {
 
     String ws = "s://dv.investimetric.io:5000/ws";
     Gson gson = new Gson();
