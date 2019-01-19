@@ -18,7 +18,7 @@ public class ExampleClient extends WebSocketClient {
     String request;
 
 //    public static void main(String arg[]) throws URISyntaxException {
-//        ExampleClient c = new ExampleClient( new URI( "s://dv.investimetric.io:5000/ws" )); // more about drafts here: http://github.com/TooTallNate/Java-WebSocket/wiki/Drafts
+//        ExampleClient c = new ExampleClient( new URI( "s://dv.investimetric.io:5000/ws" ),""); // more about drafts here: http://github.com/TooTallNate/Java-WebSocket/wiki/Drafts
 //        c.connect();
 //    }
 
