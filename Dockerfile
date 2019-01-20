@@ -11,6 +11,7 @@ ADD  target/libs libs
 ADD suite/order-module.xml order-module.xml
 ADD suite/search-module.xml search-module.xml
 ADD suite/backend.xml backend.xml
+ADD suite/front.xml front.xml
 
 # Command line to execute the test
 # Expects below ennvironment variables
