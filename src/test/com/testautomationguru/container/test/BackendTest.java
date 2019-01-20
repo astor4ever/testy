@@ -21,7 +21,7 @@ public class BackendTest {
     Gson gson = new Gson();
 
 
-    @Test
+    @Test(priority = -1)
     public void checkConnection() throws InterruptedException, URISyntaxException {
         ExampleClient client = new ExampleClient(new URI( ws ), backendRequests.pingPong);
         client.connectBlocking();
@@ -31,7 +31,7 @@ public class BackendTest {
         assertTrue(client.results.contains("{\"type\":\"pong\"}\t"));
     }
 
-    @Test
+    @Test(dependsOnMethods = {"checkConnection"})
     public void checkPairs() throws URISyntaxException, InterruptedException {
         ExampleClient  client = new ExampleClient(new URI( ws ), backendRequests.getPairs);
         client.connectBlocking();
@@ -48,7 +48,7 @@ public class BackendTest {
         assertEquals(pairsResults,backendPatternRespons.pairsListPattern());
     }
 
-    @Test(dataProvider = "pairs")
+    @Test(dataProvider = "pairs",dependsOnMethods = {"checkPairs"})
     public void checkEachPair(String pairs) throws URISyntaxException, InterruptedException {
         System.out.println("Checking: "+pairs);
         ExampleClient  client = new ExampleClient(new URI( ws ), pairs);
@@ -69,7 +69,7 @@ public class BackendTest {
     }
 
     @DataProvider(name = "pairs")
-    public static Object[][] credentials() {
+    public static Object[][] pairs() {
         return new Object[][] {
                 { backendRequests.BTC_USD_pair },
                 { backendRequests.BTC_ETH_pair },
