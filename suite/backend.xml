@@ -3,7 +3,7 @@
 <suite name="Backend-tests" parallel="none" allow-return-values="true" >
   <test name="backend">
     <classes>
-      <class name="com.testautomationguru.container.test.backend"/>
+      <class name="com.testautomationguru.container.test.BackendTest"/>
     </classes>
   </test>
 </suite> <!-- Suite -->
