@@ -1,0 +1,56 @@
+// variable
+def network='jenkins-${BUILD_NUMBER}'
+def seleniumHub='selenium-hub-${BUILD_NUMBER}'
+def chrome='chrome-${BUILD_NUMBER}'
+def firefox='firefox-${BUILD_NUMBER}'
+def containertest='conatinertest-${BUILD_NUMBER}'
+
+pipeline {
+
+		   agent {
+			label 'DV'
+			}
+
+		  stages{
+      stage('Setting Up Selenium Grid') {
+         steps{
+            sh "/snap/bin/docker network create ${network}"
+            sh "/snap/bin/docker run -d -p 4444:4444 --name ${seleniumHub} --network ${network} selenium/hub"
+            sh "/snap/bin/docker run -d -e HUB_PORT_4444_TCP_ADDR=${seleniumHub} -e HUB_PORT_4444_TCP_PORT=4444 --network ${network} --name ${chrome} selenium/node-chrome"
+            sh "/snap/bin/docker run -d -e HUB_PORT_4444_TCP_ADDR=${seleniumHub} -e HUB_PORT_4444_TCP_PORT=4444 --network ${network} --name ${firefox} selenium/node-firefox"
+         }
+      }
+      stage('Test') {
+         steps{
+             parallel(
+            //   "order-module-firefox":{
+            //       sh "/snap/bin/docker run --rm -e SELENIUM_HUB=${seleniumHub} -e BROWSER=firefox -e MODULE=order-module.xml -v ${WORKSPACE}/search:/usr/share/tag/test-output --network ${network} astor4ever/mvndocker"
+            //       archiveArtifacts artifacts: 'search/**', fingerprint: true
+            //   },
+               "backend":{
+                  sh "/snap/bin/docker run --rm -e SELENIUM_HUB=${seleniumHub} -e BROWSER=chrome -e MODULE=backend.xml -v ${WORKSPACE}/backend:/usr/share/tag/test-output  --network ${network} astor4ever/mvndocker"
+                  archiveArtifacts artifacts: 'backend/**', fingerprint: true
+                  publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'backend/', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: ''])
+
+               }
+            )
+         }
+      }
+        //  stage('Report') {
+        //  steps{$class: 'Publisher', reportFilenamePattern: 'search/testng-results.xml'}
+        //  }
+
+
+    }
+    post{
+      always {
+         sh "/snap/bin/docker rm -vf ${chrome}"
+         sh "/snap/bin/docker rm -vf ${firefox}"
+         sh "/snap/bin/docker rm -vf ${seleniumHub}"
+         sh "/snap/bin/docker network rm ${network}"
+      }
+    //   failure {
+    //              mail bcc: '', body: "<b>Example</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "ERROR CI: Project name -> ${env.JOB_NAME}", to: "MATEUSZ.Z.GRABOWSKI@GMAIL.COM";
+    //               }
+   }
+}
