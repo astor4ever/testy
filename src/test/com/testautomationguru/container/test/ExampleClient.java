@@ -15,7 +15,7 @@ public class ExampleClient extends WebSocketClient {
 
 
     List<String> results = new ArrayList<>();
-    String request;
+    private String request;
 
 //    public static void main(String arg[]) throws URISyntaxException {
 //        ExampleClient c = new ExampleClient( new URI( "s://dv.investimetric.io:5000/ws" ),""); // more about drafts here: http://github.com/TooTallNate/Java-WebSocket/wiki/Drafts
@@ -33,8 +33,6 @@ public class ExampleClient extends WebSocketClient {
     @Override
     public void onOpen( ServerHandshake handshakedata ) {
         ByteBuffer longelinebuffer = ByteBuffer.wrap( request.getBytes() );
-        ByteBuffer longelinebuffer2 = ByteBuffer.wrap( "{\"type\":\"subscribe\",\"channels\":[{\"name\":\"pairs\"}]}".getBytes() );
-        ByteBuffer longelinebuffer3 = ByteBuffer.wrap( "{\"type\":\"subscribe\",\"channels\":[{\"name\":\"ob\",\"pair\":\"BTC-USD\"}]}".getBytes() );
 
         sendFragmentedFrame(Framedata.Opcode.TEXT,longelinebuffer,true);
         System.out.println( "opened connection" );
