@@ -23,22 +23,6 @@ public class SetUpUI {
     @BeforeTest
     public void setUp() throws MalformedURLException {
 
-        File f = new File("."); // current directory
-
-        File[] files = f.listFiles();
-        for (File file : files) {
-            if (file.isDirectory()) {
-                System.out.print("directory:");
-            } else {
-                System.out.print("     file:");
-            }
-            try {
-                System.out.println(file.getCanonicalPath());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
         String localRun = PropertyManager.getInstance().getLocalRun();
         DesiredCapabilities dc = DesiredCapabilities.chrome();
         if(localRun.equals("true")){
