@@ -25,7 +25,7 @@ public class UITests extends SetUpUI{
     public void checkTitle() throws InterruptedException {
         mp = PageFactory.initElements(driver,MainPage.class);
         Thread.sleep(1500);
-        assertEquals(mp.getOrderbookText(),"Orderbook");
+        assertEquals(mp.getOrderbookText(),"ee");
         System.out.println("Orderbook is displayed.");
     }
 
