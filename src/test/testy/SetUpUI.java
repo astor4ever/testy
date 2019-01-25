@@ -30,6 +30,7 @@ public class SetUpUI {
             }
             String host = System.getProperty("seleniumHubHost");
             driver = new RemoteWebDriver(new URL("http://" + host + ":4444/wd/hub"), dc);
+        System.out.println("Browser launched.");
         }
 //        driver.get("http://dv.investimetric.io:81/");
 //        System.out.println("Browser launched and navigated to Investimetric");

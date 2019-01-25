@@ -17,7 +17,8 @@ public class UITests extends SetUpUI{
     @BeforeTest
     public void setUp() throws MalformedURLException {
         super.setUp();
-
+        driver.get("http://dv.investimetric.io:81/");
+        System.out.println("Navigated to Investimetric");
     }
 
     @Test
