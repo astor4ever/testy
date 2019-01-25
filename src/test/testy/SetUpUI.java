@@ -15,7 +15,7 @@ import java.net.URL;
 
 public class SetUpUI {
 
-    private WebDriver driver;
+    public WebDriver driver;
 
 
     @BeforeTest
@@ -24,8 +24,8 @@ public class SetUpUI {
        // String localRun = PropertyManager.getInstance().getLocalRun();
         DesiredCapabilities dc = DesiredCapabilities.chrome();
        // if(localRun.equals("true")){
-      //      PropertyManager.getInstance().setChromeWebDriver();
-      //      driver = new ChromeDriver();
+       //     PropertyManager.getInstance().setChromeWebDriver();
+       //     driver = new ChromeDriver();
             if (System.getProperty("browser").equals("firefox")) {
                 dc = DesiredCapabilities.firefox();
             }
