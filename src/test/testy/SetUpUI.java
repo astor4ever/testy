@@ -22,7 +22,7 @@ public class SetUpUI {
 
 
         DesiredCapabilities dc = DesiredCapabilities.chrome();
-        PropertyManager.getInstance().setChromeWebDriver();
+   //     PropertyManager.getInstance().setChromeWebDriver();
         driver = new ChromeDriver();
         if(System.getProperty("localRun") != null){
             if (System.getProperty("browser").equals("firefox")) {
