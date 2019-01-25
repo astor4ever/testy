@@ -1,16 +1,14 @@
-package com.testautomationguru.container.test;
+package testy;
 
-import com.testautomationguru.container.test.utilities.PropertyManager;
+import testy.utilities.PropertyManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -22,6 +20,10 @@ public class SetUpUI {
 
     @BeforeTest
     public void setUp() throws MalformedURLException {
+
+        File file = new File("selenium.properties");
+        String path = file.getAbsolutePath();
+        System.out.println(path);
 
         String localRun = PropertyManager.getInstance().getLocalRun();
         DesiredCapabilities dc = DesiredCapabilities.chrome();

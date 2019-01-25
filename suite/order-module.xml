@@ -3,7 +3,7 @@
 <suite name="order-module" parallel="none" allow-return-values="true" >
   <test name="order-test">
     <classes>
-      <class name="com.testautomationguru.container.test.OrderTest"/>
+      <class name="testy.OrderTest"/>
     </classes>
   </test>
 </suite> <!-- Suite -->

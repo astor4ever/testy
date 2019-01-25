@@ -3,7 +3,7 @@
 <suite name="UI-module" parallel="none" allow-return-values="true" >
     <test name="UI-tests">
         <classes>
-            <class name="com.testautomationguru.container.test.UITests"/>
+            <class name="testy.UITests"/>
         </classes>
     </test>
 </suite> <!-- Suite -->

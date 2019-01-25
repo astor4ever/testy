@@ -1,12 +1,16 @@
-package com.testautomationguru.container.test;
+package testy;
 
 
 import com.google.gson.Gson;
 import com.google.gson.internal.LinkedTreeMap;
-import com.testautomationguru.container.test.resources.*;
+import testy.resources.*;
 import org.json.JSONObject;
+import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import testy.resources.backendPatternRespons;
+import testy.resources.backendRequests;
+
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -45,7 +49,7 @@ public class BackendTest {
             pairsResults.add(((LinkedTreeMap) listForPairs).get("id"));
         }
         System.out.println(pairsResults);
-        assertEquals(pairsResults,backendPatternRespons.pairsListPattern());
+        Assert.assertEquals(pairsResults, backendPatternRespons.pairsListPattern());
     }
 
     @Test(dataProvider = "pairs",dependsOnMethods = {"checkPairs"})

@@ -3,7 +3,7 @@
 <suite name="search-module" parallel="none" allow-return-values="true" >
   <test name="search-test">
     <classes>
-      <class name="com.testautomationguru.container.test.SearchTest"/>
+      <class name="testy.SearchTest"/>
     </classes>
   </test>
 </suite>

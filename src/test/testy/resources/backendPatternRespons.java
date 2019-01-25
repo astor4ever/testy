@@ -1,4 +1,4 @@
-package com.testautomationguru.container.test.resources;
+package testy.resources;
 
 import java.util.ArrayList;
 import java.util.List;

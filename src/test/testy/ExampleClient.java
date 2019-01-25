@@ -1,4 +1,4 @@
-package com.testautomationguru.container.test;
+package testy;
 
 import java.net.URI;
 import java.net.URISyntaxException;

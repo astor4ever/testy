@@ -1,8 +1,6 @@
-package com.testautomationguru.container.test.utilities;
+package testy.utilities;
 
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.Properties;
 
 //**********************************************************************************************************
@@ -13,7 +11,7 @@ public class PropertyManager {
 
     private static PropertyManager instance;
     private static final Object lock = new Object();
-    private String propertyFilePath = "com/testautomationguru/container/test/resources/selenium.properties";
+    private String propertyFilePath = "testy/resources/selenium.properties";
     private static String local;
     private static String chromeWebDriver;
     //Create a Singleton instance. We need only one instance of Property Manager.
