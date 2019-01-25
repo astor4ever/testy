@@ -26,6 +26,7 @@ public class UITests extends SetUpUI{
         mp = PageFactory.initElements(driver,MainPage.class);
         Thread.sleep(1500);
         assertEquals(mp.getOrderbookText(),"Orderbook");
+        System.out.println("Orderbook is displayed.");
     }
 
 }
