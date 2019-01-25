@@ -35,7 +35,7 @@ public class PropertyManager {
             //InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(propertyFilePath);
             String propertyFilePath="";
             if(System.getProperty("remote") != null){
-                propertyFilePath = "selenium.properties";
+                propertyFilePath = "tag/selenium.properties";
             }else{
                 propertyFilePath = "testy/resources/selenium.properties";
             }
