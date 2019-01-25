@@ -2,6 +2,7 @@ package com.testautomationguru.container.test.utilities;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 //**********************************************************************************************************
@@ -12,8 +13,7 @@ public class PropertyManager {
 
     private static PropertyManager instance;
     private static final Object lock = new Object();
-    private static String propertyFilePath = System.getProperty("user.dir")+
-            "\\src\\test\\com\\testautomationguru\\container\\test\\resources\\selenium.properties";
+    private String propertyFilePath = "com/testautomationguru/container/test/resources/selenium.properties";
     private static String local;
     private static String chromeWebDriver;
     //Create a Singleton instance. We need only one instance of Property Manager.
@@ -34,8 +34,10 @@ public class PropertyManager {
 
         //Read configuration.properties file
         try {
-            prop.load(new FileInputStream(propertyFilePath));
-            //prop.load(this.getClass().getClassLoader().getResourceAsStream("configuration.properties"));
+            //prop.load(new FileInputStream(propertyFilePath));
+            InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(propertyFilePath);
+            //prop.load(this.getClass().getClassLoader().getResourceAsStream(propertyFilePath));
+            prop.load(is);
         } catch (IOException e) {
             System.out.println("Configuration properties file cannot be found");
         }
