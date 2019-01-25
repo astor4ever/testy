@@ -2,7 +2,7 @@ package testy;
 
 import java.net.MalformedURLException;
 
-import main.java.com.testautomationguru.container.pages.SearchPage;
+import page.SearchPage;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;

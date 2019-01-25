@@ -4,7 +4,7 @@ package testy;
 import java.net.MalformedURLException;
 import java.util.List;
 
-import main.java.com.testautomationguru.container.pages.OrderPage;
+import page.OrderPage;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;

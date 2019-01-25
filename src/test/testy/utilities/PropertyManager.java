@@ -11,7 +11,6 @@ public class PropertyManager {
 
     private static PropertyManager instance;
     private static final Object lock = new Object();
-    private String propertyFilePath = "testy/resources/selenium.properties";
     private static String local;
     private static String chromeWebDriver;
     //Create a Singleton instance. We need only one instance of Property Manager.
@@ -34,6 +33,13 @@ public class PropertyManager {
         try {
             //prop.load(new FileInputStream(propertyFilePath));
             //InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(propertyFilePath);
+            String propertyFilePath="";
+            if(System.getProperty("remote") != null){
+                propertyFilePath = "/usr/share/tag/selenium.properties";
+            }else{
+                propertyFilePath = "testy/resources/selenium.properties";
+            }
+
             prop.load(this.getClass().getClassLoader().getResourceAsStream(propertyFilePath));
             //prop.load(is);
         } catch (IOException e) {
