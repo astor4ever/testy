@@ -22,8 +22,8 @@ public class SetUpUI {
 
 
         DesiredCapabilities dc = DesiredCapabilities.chrome();
-   //     PropertyManager.getInstance().setChromeWebDriver();
-        driver = new ChromeDriver();
+
+
         if(System.getProperty("localRun") != null){
             if (System.getProperty("browser").equals("firefox")) {
                 dc = DesiredCapabilities.firefox();
@@ -31,6 +31,9 @@ public class SetUpUI {
             String host = System.getProperty("seleniumHubHost");
             driver = new RemoteWebDriver(new URL("http://" + host + ":4444/wd/hub"), dc);
         System.out.println("Browser launched.");
+        }else{
+            PropertyManager.getInstance().setChromeWebDriver();
+            driver = new ChromeDriver();
         }
 
     }
