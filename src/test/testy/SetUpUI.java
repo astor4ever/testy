@@ -9,7 +9,6 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -21,15 +20,6 @@ public class SetUpUI {
 
     @BeforeTest
     public void setUp() throws MalformedURLException {
-
-        File file = new File("selenium.properties");
-        String path = null;
-        try {
-            path = file.getCanonicalPath();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        System.out.println(path);
 
         String localRun = PropertyManager.getInstance().getLocalRun();
         DesiredCapabilities dc = DesiredCapabilities.chrome();

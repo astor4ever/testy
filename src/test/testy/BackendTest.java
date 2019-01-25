@@ -3,14 +3,11 @@ package testy;
 
 import com.google.gson.Gson;
 import com.google.gson.internal.LinkedTreeMap;
-import testy.resources.*;
 import org.json.JSONObject;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import testy.resources.backendPatternRespons;
-import testy.resources.backendRequests;
-
+import testy.resources.*;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
