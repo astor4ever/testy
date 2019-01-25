@@ -20,11 +20,11 @@ public class SetUpUI {
     @BeforeTest
     public void setUp() throws MalformedURLException {
 
-       // String localRun = PropertyManager.getInstance().getLocalRun();
+
         DesiredCapabilities dc = DesiredCapabilities.chrome();
-       // if(localRun.equals("true")){
-       //     PropertyManager.getInstance().setChromeWebDriver();
-       //     driver = new ChromeDriver();
+        PropertyManager.getInstance().setChromeWebDriver();
+        driver = new ChromeDriver();
+        if(System.getProperty("localRun") != null){
             if (System.getProperty("browser").equals("firefox")) {
                 dc = DesiredCapabilities.firefox();
             }
@@ -32,9 +32,8 @@ public class SetUpUI {
             driver = new RemoteWebDriver(new URL("http://" + host + ":4444/wd/hub"), dc);
         System.out.println("Browser launched.");
         }
-//        driver.get("http://dv.investimetric.io:81/");
-//        System.out.println("Browser launched and navigated to Investimetric");
-//    }
+
+    }
 
 
     @AfterTest
