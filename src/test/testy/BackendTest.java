@@ -49,7 +49,7 @@ public class BackendTest {
         Assert.assertEquals(pairsResults, backendPatternRespons.pairsListPattern());
     }
 
-    @Test(dataProvider = "pairs",dependsOnMethods = {"checkPairs"})
+    @Test(dataProvider = "ob_pairs",dependsOnMethods = {"checkPairs"})
     public void checkEachPair(String pairs) throws URISyntaxException, InterruptedException {
         System.out.println("Checking: "+pairs);
         ExampleClient  client = new ExampleClient(new URI( ws ), pairs);
@@ -69,16 +69,70 @@ public class BackendTest {
         }
     }
 
-    @DataProvider(name = "pairs")
-    public static Object[][] pairs() {
+    @Test(dataProvider = "ob_pairs",dependsOnMethods = {"checkPairs"})
+    public void checkOBtypes(String pairs) throws URISyntaxException, InterruptedException {
+        System.out.println("Checking: "+pairs);
+        ExampleClient  client = new ExampleClient(new URI( ws ), pairs);
+        client.connectBlocking();
+        Thread.sleep(3000);
+        System.out.println(client.results);
+        client.closeBlocking();
+
+        List<JSONObject> lol = new ArrayList<>();
+        for(String element : client.results){
+            lol.add(new JSONObject(element));
+        }
+
+        for(JSONObject element : lol){
+            assertEquals(element.toMap().get("type"),"ob");
+            System.out.println("Type ob is correct.");
+        }
+    }
+
+    @Test(dataProvider = "candle_pairs",dependsOnMethods = {"checkPairs"})
+    public void checkCandlesTypes(String pairs) throws URISyntaxException, InterruptedException {
+        System.out.println("Checking: "+pairs);
+        ExampleClient  client = new ExampleClient(new URI( ws ), pairs);
+        client.connectBlocking();
+        Thread.sleep(3000);
+        System.out.println(client.results);
+        client.closeBlocking();
+
+        List<JSONObject> lol = new ArrayList<>();
+        for(String element : client.results){
+            lol.add(new JSONObject(element));
+        }
+
+        for(JSONObject element : lol){
+            assertEquals(element.toMap().get("type"),"candle_m1");
+            System.out.println("Type candle_m1 is correct.");
+        }
+    }
+
+
+    @DataProvider(name = "ob_pairs")
+    public static Object[][] ob_pairs() {
         return new Object[][] {
-                { backendRequests.BTC_USD_pair },
-                { backendRequests.BTC_ETH_pair },
-                { backendRequests.BTC_EUR_pair },
-                { backendRequests.ETH_EUR_pair },
-                { backendRequests.ETH_USD_pair }
+                { backendRequests.BTC_USD_ob_pair},
+                { backendRequests.BTC_ETH_ob_pair},
+                { backendRequests.BTC_EUR_ob_pair},
+                { backendRequests.ETH_EUR_ob_pair},
+                { backendRequests.ETH_USD_ob_pair}
         };
     }
+
+
+    @DataProvider(name = "candle_pairs")
+    public static Object[][] candle_pairs() {
+        return new Object[][] {
+                { backendRequests.BTC_USD_candle_m1_pair},
+                { backendRequests.BTC_ETH_candle_m1_pair},
+                { backendRequests.BTC_EUR_candle_m1_pair},
+                { backendRequests.ETH_EUR_candle_m1_pair},
+                { backendRequests.ETH_USD_candle_m1_pair}
+        };
+    }
+
 
 
 
