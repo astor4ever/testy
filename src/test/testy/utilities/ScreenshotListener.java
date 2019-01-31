@@ -29,6 +29,7 @@ public class ScreenshotListener extends TestListenerAdapter {
                     System.out.println("DEST: "+destFile);
                     FileUtils.copyFile(scrFile, destFile);
                     Reporter.log("<a href='" + destFile.getAbsolutePath() + "'> <img src='" + destFile.getAbsolutePath() + "' height='100' width='100'/> </a>");
+                    Reporter.log("<a href='" + "/home/workspace/testy/front/" + "'> <img src='" + "/home/workspace/testy/front/" + "' height='100' width='100'/> </a>");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
