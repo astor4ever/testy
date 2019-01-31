@@ -26,16 +26,16 @@ public class ScreenshotListener extends TestListenerAdapter {
                 try {
                     String reportDirectory;
                     if (System.getProperty("localRun") != null) {
-                        reportDirectory = "home\\dev\\workspace\\testy\\front\\target\\surefire-reports";
+                        reportDirectory = "/workspace/testy/front/target/surefire-reports";
+
                     } else {
                         reportDirectory = new File(System.getProperty("user.dir")).getAbsolutePath() + "/target/surefire-reports";
                     }
                     System.out.println("REPORT DIRECTORY IS:" + reportDirectory);
-                    File destFile = new File(reportDirectory + "\\failure_screenshots\\" + methodName + "_" + formater.format(calendar.getTime()) + ".png");
+                    File destFile = new File(reportDirectory + "/failure_screenshots/" + methodName + "_" + formater.format(calendar.getTime()) + ".png");
                     System.out.println("DEST FILE" + destFile);
                     FileUtils.copyFile(scrFile, destFile);
                     Reporter.log("<a href='" + destFile.getAbsolutePath() + "'> <img src='" + destFile.getAbsolutePath() + "' height='100' width='100'/> </a>");
-                    Reporter.log("<a href='" + destFile + "'> <img src='" + destFile + "' height='100' width='100'/> </a>");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
