@@ -15,6 +15,7 @@ public class RemoteDriverManager extends DriverManager {
     public void setupDefaultDriver(){
         String host = System.getProperty("seleniumHubHost");
         DesiredCapabilities dc = DesiredCapabilities.chrome();
+        dc.setCapability("takesScreenshot", true);
         try {
             driver = new RemoteWebDriver(new URL("http://" + host + ":4444/wd/hub"), dc);
         } catch (MalformedURLException e) {
