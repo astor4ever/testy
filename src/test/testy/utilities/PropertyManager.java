@@ -48,7 +48,7 @@ public class PropertyManager {
         //Get properties from configuration.properties
         local = prop.getProperty("LocalRun");
         chromeWebDriver = prop.getProperty("chromeWebDriver");
-        jenkinsBuild = prop.getProperty("BUILD_NUMBER");
+        jenkinsBuild = prop.getProperty("${BUILD_NUMBER}");
     }
 
     public String getLocalRun () {
