@@ -19,4 +19,4 @@ ADD suite/front.xml front.xml
 # MODULE  = order-module / search-module
 # SELENIUM_HUB = selenium hub hostname / ipaddress
 
-ENTRYPOINT java -cp container-test.jar:libs/* -DseleniumHubHost=$SELENIUM_HUB -DlocalRun=$LOCAL -Dbrowser=$BROWSER org.testng.TestNG $MODULE
+ENTRYPOINT java -cp container-test.jar:libs/* -DseleniumHubHost=$SELENIUM_HUB -DlocalRun=$LOC3AL -DjenkinsBuild=JENKINS_BUILD -Dbrowser=$BROWSER org.testng.TestNG $MODULE

@@ -27,8 +27,8 @@ public class ScreenshotListener extends TestListenerAdapter {
                     String reportDirectory = new File(System.getProperty("user.dir")).getAbsolutePath();
                     File destFile = new File(reportDirectory + "/test-output/" + methodName + "_" + formater.format(calendar.getTime()) + ".png");
                     FileUtils.copyFile(scrFile, destFile);
-                    System.out.println(System.getProperty("${BUILD_NUMBER}")+ "prop");
-                    Reporter.log("<a href='" + "/job/testy/"+System.getProperty("${BUILD_NUMBER}")+"/artifact/front/"+destFile.getAbsolutePath().substring(34) + "'> <img src='" + "/job/testy/"+System.getProperty("${BUILD_NUMBER}")+"/artifact/front/"+destFile.getAbsolutePath().substring(34) + "' height='100' width='100'/> </a>");
+                    System.out.println(System.getProperty("jenkinsBuild")+ "prop");
+                    Reporter.log("<a href='" + "/job/testy/"+System.getProperty("jenkinsBuild")+"/artifact/front/"+destFile.getAbsolutePath().substring(34) + "'> <img src='" + "/job/testy/"+System.getProperty("jenkinsBuild")+"/artifact/front/"+destFile.getAbsolutePath().substring(34) + "' height='100' width='100'/> </a>");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
