@@ -26,7 +26,7 @@ public class ScreenshotListener extends TestListenerAdapter {
                 try {
                     String reportDirectory;
                     if (System.getProperty("localRun") != null) {
-                        reportDirectory = "\\home\\dev\\workspace\\testy\\front\\target\\surefire-reports";
+                        reportDirectory = new File(System.getProperty("user.dir")).getAbsolutePath() + "\\home\\dev\\workspace\\testy\\front\\target\\surefire-reports";
                     } else {
                         reportDirectory = new File(System.getProperty("user.dir")).getAbsolutePath() + "/target/surefire-reports";
                     }
