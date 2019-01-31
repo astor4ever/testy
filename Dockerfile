@@ -1,7 +1,7 @@
 FROM openjdk:8-jre-slim
 
 #A Directory in the base image to copy our depedencies
-WORKDIR /usr/share/tag
+WORKDIR /home/workspace/testy
 
 # Add the project jar & copy dependencies
 ADD  target/container-test.jar container-test.jar
