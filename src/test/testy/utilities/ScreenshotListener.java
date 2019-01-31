@@ -16,7 +16,6 @@ public class ScreenshotListener extends TestListenerAdapter {
 
     @Override
     public void onTestFailure (ITestResult result) {
-        try {
             ITestContext context = result.getTestContext();
             this.driver = (WebDriver) context.getAttribute("driver");
             Calendar calendar = Calendar.getInstance();
@@ -38,11 +37,11 @@ public class ScreenshotListener extends TestListenerAdapter {
                     Reporter.log("<a href='" + destFile.getAbsolutePath() + "'> <img src='" + destFile.getAbsolutePath() + "' height='100' width='100'/> </a>");
                 } catch (IOException e) {
                     e.printStackTrace();
+                    System.out.println(e.getMessage());
                 }
+                System.out.println("SCREEN SAVED");
             }
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-        }
+        System.out.println("SCREEN SAVED2");
     }
 
 
