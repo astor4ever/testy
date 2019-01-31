@@ -26,7 +26,7 @@ public class UITests extends SetUpBrowser{
     public void checkTitle() throws InterruptedException {
         mp = PageFactory.initElements(driver,MainPage.class);
         Thread.sleep(1500);
-        assertEquals(mp.getOrderbookText(),"Orderbook");
+        assertEquals(mp.getOrderbookText(),"Orderbookzaa");
         System.out.println("Orderbook is displayed.");
     }
 

@@ -25,6 +25,7 @@ public class ScreenshotListener extends TestListenerAdapter {
             File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
             try {
                 String reportDirectory = new File(System.getProperty("user.dir")).getAbsolutePath() + "/target/surefire-reports";
+                System.out.println("REPORT DIRECTORY IS:"+reportDirectory);
                 File destFile = new File(reportDirectory +"/failure_screenshots/"+methodName+"_"+formater.format(calendar.getTime())+".png");
                 FileUtils.copyFile(scrFile, destFile);
                 Reporter.log("<a href='"+ destFile.getAbsolutePath() + "'> <img src='"+ destFile.getAbsolutePath() + "' height='100' width='100'/> </a>");
