@@ -14,6 +14,7 @@ public class PropertyManager {
     private static final Object lock = new Object();
     private static String local;
     private static String chromeWebDriver;
+    private static String jenkinsBuild;
     //Create a Singleton instance. We need only one instance of Property Manager.
     public static PropertyManager getInstance () {
         if (instance == null) {
@@ -47,6 +48,7 @@ public class PropertyManager {
         //Get properties from configuration.properties
         local = prop.getProperty("LocalRun");
         chromeWebDriver = prop.getProperty("chromeWebDriver");
+        jenkinsBuild = prop.getProperty("BUILD_NUMBER");
     }
 
     public String getLocalRun () {
@@ -56,5 +58,9 @@ public class PropertyManager {
     public void setChromeWebDriver(){
         System.setProperty("webdriver.chrome.driver", chromeWebDriver);
     }
+
+    public String getJenkinsBuild() { return  jenkinsBuild; }
+
+
 
 }
