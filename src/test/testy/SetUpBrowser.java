@@ -28,7 +28,7 @@ public class SetUpBrowser {
         if(System.getProperty("localRun") != null) {
             driverManager = DriverManagerFactory.getManager(DriverType.REMOTE);
         }else{
-            driverManager = DriverManagerFactory.getManager(DriverType.CHROME);
+            driverManager = DriverManagerFactory.getManager(DriverType.FIREFOX);
         }
 
 

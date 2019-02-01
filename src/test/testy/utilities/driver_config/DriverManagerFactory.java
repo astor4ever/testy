@@ -12,10 +12,13 @@ public class DriverManagerFactory {
 
         switch (type) {
             case FIREFOX:
-                driverManager = new ChromeDriverManager();
+                driverManager = new FirefoxDriverManager();
                 break;
             case REMOTE:
                 driverManager = new RemoteDriverManager();
+                break;
+            case CHROME:
+                driverManager = new ChromeDriverManager();
                 break;
             default:
                 driverManager = new ChromeDriverManager();

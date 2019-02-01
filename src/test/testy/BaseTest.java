@@ -29,7 +29,7 @@ public class BaseTest {
     }
 
     @AfterTest
-    public void tearDown() throws InterruptedException {
+    public void tearDown() {
         driver.quit();
     }  
 }
